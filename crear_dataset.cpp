@@ -24,20 +24,20 @@ void Crear_dataset(int tamanio, string tipo_ordenamiento) {
 
     if (tipo_ordenamiento == "Random") {
         for (int i = 0; i < tamanio; i++){
-        numeros.push_back(Generar_numero_aleatorio(0,100));
+        numeros.push_back(Generar_numero_aleatorio(0,1000));
         }
         random_shuffle(numeros.begin(), numeros.end());
     }
     else if (tipo_ordenamiento == "Parcialmente-ordenados") {
         for (int i = 0; i < tamanio; i++){ 
-            numeros.push_back(Generar_numero_aleatorio(0,100));
+            numeros.push_back(Generar_numero_aleatorio(0,1000));
         }
         
         sort(numeros.begin(), numeros.begin() + tamanio/2);
     }
     else if (tipo_ordenamiento == "Inversamente-ordenados") {
         for (int i = 0; i < tamanio; i++) {
-            numeros.push_back(Generar_numero_aleatorio(0,100));
+            numeros.push_back(Generar_numero_aleatorio(0,1000));
         }
         sort(numeros.begin(), numeros.end(), greater<int>());
     }
@@ -57,11 +57,13 @@ int main() {
     string tipo_ordenamiento;
     cout << "Ingerese el tipo de ordenamiento (Random, Parcialmente-ordenados, Inversamnete-ordenados): " << endl;
     cin >> tipo_ordenamiento;
-    cout << "Se creara un dataset de 1000, 10000 y 100000 elementos" << endl;
+    cout << "Se creara un dataset de 1000, 10000, 100000 y 1000000 elementos" << endl;
 
     Crear_dataset(1000, tipo_ordenamiento);
     Crear_dataset(10000, tipo_ordenamiento);
     Crear_dataset(100000, tipo_ordenamiento);
+    Crear_dataset(1000000, tipo_ordenamiento);
+
 
     return 0;
 }
