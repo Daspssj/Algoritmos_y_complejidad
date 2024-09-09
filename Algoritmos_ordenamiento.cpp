@@ -3,6 +3,7 @@
 #include <fstream>
 #include <chrono>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -18,6 +19,35 @@ void selectionSort(vector<int>& arr) {
         if (min_idx != i) {
             swap(arr[i], arr[min_idx]);
         }
+    }
+}
+
+void quickSort(vector<int>& arr, int izq, int der) {
+    int i = izq, j = der;
+    int tmp;
+    int pivot = arr[(izq + der) / 2];
+
+    while (i <= j) {
+        while (arr[i] < pivot) {
+            i++;
+        }
+        while (arr[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+            i++;
+            j--;
+        }
+    }
+
+    if (izq < j) {
+        quickSort(arr, izq, j);
+    }
+    if (i < der) {
+        quickSort(arr, i, der);
     }
 }
 
@@ -71,6 +101,8 @@ void mergeSort(vector<int> &array, int izq, int der) {
     }
 }
 
+
+
 int main() {
     string NombreArchivo;
     string tipo_ordenamiento;
@@ -93,7 +125,7 @@ int main() {
     }
 
     if (tipo_ordenamiento == "mergeSort") {
-        for (int i = 0; i < 5; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
+        for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             mergeSort(array, 0, array.size() - 1);
             auto fin = chrono::high_resolution_clock::now();
@@ -104,7 +136,7 @@ int main() {
         }
     }
     else if (tipo_ordenamiento == "selectionSort") {
-        for (int i = 0; i < 5; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
+        for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             selectionSort(array);
             auto fin = chrono::high_resolution_clock::now();
@@ -113,7 +145,32 @@ int main() {
 
             cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << " / "<< duraccion.count()/1000000 << " segundos" << endl;
         }
-    }    
+    }
+    else if (tipo_ordenamiento == "quickSort") {
+        for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
+            auto inicio = chrono::high_resolution_clock::now();
+            quickSort(array, 0, array.size() - 1);
+            auto fin = chrono::high_resolution_clock::now();
+
+            auto duraccion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
+
+            cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << " / "<< duraccion.count()/1000000 << " segundos" << endl;
+        }
+    } 
+    else if(tipo_ordenamiento == "SortC++") {
+        for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
+            auto inicio = chrono::high_resolution_clock::now();
+            sort(array.begin(), array.end());
+            auto fin = chrono::high_resolution_clock::now();
+
+            auto duraccion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
+
+            cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << " / "<< duraccion.count()/1000000 << " segundos" << endl;
+        }
+    }
+    else {
+        cout << "Tipo de ordenamiento no valido" << endl;
+    }
 
     archivo.close();
 
