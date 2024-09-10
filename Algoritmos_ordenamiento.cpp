@@ -125,18 +125,13 @@ int main() {
     }
 
     if (tipo_ordenamiento == 1) {
-        for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
-            auto inicio = chrono::high_resolution_clock::now();
-            mergeSort(array, 0, array.size() - 1);
-            auto fin = chrono::high_resolution_clock::now();
-
-            auto duraccion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
-
-            cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << "/ "<< duraccion.count()/1000000 << " segundos" << endl;
-        }
+        auto inicio = chrono::high_resolution_clock::now();
+        mergeSort(array, 0, array.size() - 1);
+        auto fin = chrono::high_resolution_clock::now();
+        auto duraccion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
+        cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << "/ "<< duraccion.count()/1000000 << " segundos" << endl;
     }
     else if (tipo_ordenamiento == 2) {
-        for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             selectionSort(array);
             auto fin = chrono::high_resolution_clock::now();
@@ -144,10 +139,8 @@ int main() {
             auto duraccion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
 
             cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << " / "<< duraccion.count()/1000000 << " segundos" << endl;
-        }
     }
     else if (tipo_ordenamiento == 3) {
-        for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             quickSort(array, 0, array.size() - 1);
             auto fin = chrono::high_resolution_clock::now();
@@ -155,10 +148,8 @@ int main() {
             auto duraccion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
 
             cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << " / "<< duraccion.count()/1000000 << " segundos" << endl;
-        }
     } 
     else if(tipo_ordenamiento == 4) {
-        for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             sort(array.begin(), array.end());
             auto fin = chrono::high_resolution_clock::now();
@@ -166,7 +157,6 @@ int main() {
             auto duraccion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
 
             cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << " / "<< duraccion.count()/1000000 << " segundos" << endl;
-        }
     }
     else {
         cout << "Tipo de ordenamiento no valido" << endl;

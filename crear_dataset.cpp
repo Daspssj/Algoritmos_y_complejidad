@@ -59,11 +59,9 @@ int main() {
     cin >> tipo_ordenamiento;
     cout << "Se creara un dataset de 1000, 10000, 100000 y 1000000 elementos" << endl;
 
-    Crear_dataset(1000, tipo_ordenamiento);
-    Crear_dataset(10000, tipo_ordenamiento);
-    Crear_dataset(100000, tipo_ordenamiento);
-    Crear_dataset(1000000, tipo_ordenamiento);
-
+    for (int i = 1000; i <= 1000000; i *= 10) {
+        Crear_dataset(i, tipo_ordenamiento);
+    }
 
     return 0;
 }
