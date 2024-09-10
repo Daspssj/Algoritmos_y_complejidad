@@ -105,12 +105,12 @@ void mergeSort(vector<int> &array, int izq, int der) {
 
 int main() {
     string NombreArchivo;
-    string tipo_ordenamiento;
-    cout << "Ingrese el nombre exacto del archivo: (con extension): ";
-    cin >> NombreArchivo;
-    cout << "Ingrese el tipo de ordenamiento (selectionSort, mergeSort): ";
+    int tipo_ordenamiento;
+    cout << "Ingrese el nombre del archivo (sin dominio .txt): ";
+    cin >> NombreArchivo ;
+    cout << "Ingrese el tipo de ordenamiento (ingresar numero):\n" << "1.- selectionSort" << "\n" << "2.- mergeSort" << "\n" << "3.- quickSort" << "\n" << "4.- SortC++" << endl;
     cin >> tipo_ordenamiento;
-    ifstream archivo(NombreArchivo);
+    ifstream archivo(NombreArchivo + ".txt");
 
     if (!archivo.is_open()) {
         cout << "No se pudo abrir el archivo" << endl;
@@ -124,7 +124,7 @@ int main() {
         array.push_back(numeros);
     }
 
-    if (tipo_ordenamiento == "mergeSort") {
+    if (tipo_ordenamiento == 1) {
         for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             mergeSort(array, 0, array.size() - 1);
@@ -135,7 +135,7 @@ int main() {
             cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << "/ "<< duraccion.count()/1000000 << " segundos" << endl;
         }
     }
-    else if (tipo_ordenamiento == "selectionSort") {
+    else if (tipo_ordenamiento == 2) {
         for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             selectionSort(array);
@@ -146,7 +146,7 @@ int main() {
             cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << " / "<< duraccion.count()/1000000 << " segundos" << endl;
         }
     }
-    else if (tipo_ordenamiento == "quickSort") {
+    else if (tipo_ordenamiento == 3) {
         for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             quickSort(array, 0, array.size() - 1);
@@ -157,7 +157,7 @@ int main() {
             cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << " / "<< duraccion.count()/1000000 << " segundos" << endl;
         }
     } 
-    else if(tipo_ordenamiento == "SortC++") {
+    else if(tipo_ordenamiento == 4) {
         for (int i = 0; i < 10; i++) {         /////////// eliminar el for para que solo se ejecute una vez antes de entregar
             auto inicio = chrono::high_resolution_clock::now();
             sort(array.begin(), array.end());
