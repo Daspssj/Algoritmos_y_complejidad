@@ -7,6 +7,10 @@
 
 using namespace std;
 
+/* 
+Se ordena un vector de enteros con el algoritmo selectionSort
+*/
+
 void selectionSort(vector<int>& arr) {
     vector<int>::size_type n = arr.size();
     for (vector<int>::size_type i = 0; i < n - 1; i++) {
@@ -21,6 +25,10 @@ void selectionSort(vector<int>& arr) {
         }
     }
 }
+
+/* 
+Se ordena un vector de enteros con el algoritmo quickSort
+*/
 
 void quickSort(vector<int>& arr, int izq, int der) {
     int i = izq, j = der;
@@ -50,6 +58,10 @@ void quickSort(vector<int>& arr, int izq, int der) {
         quickSort(arr, i, der);
     }
 }
+
+/* 
+Se ordena un vector de enteros con el algoritmo mergeSort
+*/
 
 void merge(vector<int> &array, int izq, int mid, int der) {
     int n1 = mid - izq + 1;

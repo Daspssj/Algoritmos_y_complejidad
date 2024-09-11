@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/* 
+Se escribe una matriz en un archivo de texto
+*/
+
 void escribir_matriz(const vector<vector<int>>& matriz, const string& nombre_archivo) {
     ofstream archivo(nombre_archivo);
     
@@ -24,6 +28,10 @@ void escribir_matriz(const vector<vector<int>>& matriz, const string& nombre_arc
     archivo.close();
 }
 
+/* 
+Se multiplica dos matrices cuadradas de la misma dimension con el algoritmo iterativo cubico tradicional
+*/
+
 vector<vector<int>> Multiplicacion_matrices(const vector<vector<int>>& matriz_1, const vector<vector<int>>& matriz_2) {
     size_t dimension = matriz_1.size();
     vector<vector<int>> matriz_resultante(dimension, vector<int>(dimension, 0));
@@ -39,6 +47,10 @@ vector<vector<int>> Multiplicacion_matrices(const vector<vector<int>>& matriz_1,
     return matriz_resultante;
 }
 
+/* 
+Se obtiene la transpuesta de una matriz cuadrada
+*/
+
 vector<vector<int>> Matriz_transpuesta(const vector<vector<int>>& matriz) {
     size_t dimension = matriz.size();
     vector<vector<int>> matriz_transpuesta(dimension, vector<int>(dimension));
@@ -51,6 +63,10 @@ vector<vector<int>> Matriz_transpuesta(const vector<vector<int>>& matriz) {
 
     return matriz_transpuesta;
 }
+
+/* 
+Se multiplica dos matrices cuadradas de la misma dimension con el algoritmo de multiplicacion de matrices con matriz transpuesta
+*/
 
 vector<vector<int>> Multiplicacion_matriz_transpuesta(const vector<vector<int>>& matriz_1, const vector<vector<int>>& matriz_2) {
     size_t dimension = matriz_1.size();
@@ -68,6 +84,10 @@ vector<vector<int>> Multiplicacion_matriz_transpuesta(const vector<vector<int>>&
     return matriz_resultante;
 }
 
+/* 
+Se suma dos matrices cuadradas de la misma dimension
+*/
+
 vector<vector<int>> Sumar_matrices(vector<vector<int>>& matriz_1, vector<vector<int>>& matriz_2) {
     size_t dimension = matriz_1.size();
     vector<vector<int>> matriz_resultante(dimension, vector<int>(dimension));
@@ -81,6 +101,10 @@ vector<vector<int>> Sumar_matrices(vector<vector<int>>& matriz_1, vector<vector<
     return matriz_resultante;
 }
 
+/* 
+Se resta dos matrices cuadradas de la misma dimension
+*/
+
 vector<vector<int>> Restar_matrices(vector<vector<int>>& matriz_1, vector<vector<int>>& matriz_2) {
     size_t dimension = matriz_1.size();
     vector<vector<int>> matriz_resultante(dimension, vector<int>(dimension));
@@ -93,6 +117,10 @@ vector<vector<int>> Restar_matrices(vector<vector<int>>& matriz_1, vector<vector
 
     return matriz_resultante;
 }
+
+/* 
+Se multiplica dos matrices cuadradas de la misma dimension con el algoritmo de Strassen
+*/
 
 vector<vector<int>> Strassen(vector<vector<int>>& matriz_1, vector<vector<int>>& matriz_2) {
     size_t dimension = matriz_1.size();

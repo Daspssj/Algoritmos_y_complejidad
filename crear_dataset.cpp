@@ -7,9 +7,17 @@
 
 using namespace std;
 
+/* 
+Se genera un numero aleatorio en un rango dado
+*/
+
 int Generar_numero_aleatorio(int min, int max) {
     return min + rand() % (max - min + 1);
 }
+
+/* 
+Se crea un dataset de numeros enteros en un archivo de texto
+*/
 
 void Crear_dataset(int tamanio, string tipo_ordenamiento) {
 

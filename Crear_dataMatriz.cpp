@@ -6,9 +6,17 @@
 
 using namespace std;
 
+/* 
+Se suma dos matrices cuadradas de la misma dimension
+*/
+
 int Generar_numero_aleatorio(int min, int max) {
     return min + rand() % (max - min + 1);
 }
+
+/* 
+Se crea una matriz cuadrada de tamanio dado
+*/
 
 vector<vector<int>> Matriz_Cuadrada(int tamanio) {
     vector<vector<int>> matriz (tamanio, vector<int>(tamanio));
@@ -19,6 +27,10 @@ vector<vector<int>> Matriz_Cuadrada(int tamanio) {
     }
     return matriz;
 }
+
+/* 
+Se crea un archivo de texto con dos matrices cuadradas de la misma dimension pero distintos valores
+*/
 
 void Crear_dataMatriz(vector<vector<int>> matriz1, vector<vector<int>> matriz2, string nombre_archivo) {
     ofstream archivo(nombre_archivo);
