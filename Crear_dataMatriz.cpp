@@ -48,38 +48,13 @@ void Crear_dataMatriz(vector<vector<int>> matriz1, vector<vector<int>> matriz2, 
 }
 
 int main() {
-    int tamanio2 = 2;
-    string tipo_archivo;
-
-    cout << "Que tipo de matriz desea crear (Misma-dimencion/Distintas-dimenciones)" << endl;
-    cin >> tipo_archivo;
-
-    if (tipo_archivo == "Misma-dimencion") {
-        for (int tamanio1 = 2; tamanio1 <= pow(2, 10); tamanio1 *= 2){
-            vector<vector<int>> matriz_1 = Matriz_Cuadrada(tamanio1);
-            Crear_dataMatriz(matriz_1, matriz_1, "matriz_misma_dimencion" + to_string(tamanio1) + ".txt");
-            cout << "Se crearon dos matrices de tamanio " << tamanio1 << endl;
-        }
+    
+    for (int tamanio1 = 2; tamanio1 <= pow(2, 10); tamanio1 *= 2){
+        vector<vector<int>> matriz_1 = Matriz_Cuadrada(tamanio1);
+        vector<vector<int>> matriz_2 = Matriz_Cuadrada(tamanio1);
+        Crear_dataMatriz(matriz_1, matriz_2, "matriz_misma_dimension" + to_string(tamanio1) + ".txt");
+        cout << "Se crearon dos matrices de tamanio " << tamanio1 << endl;
     }
-    else if (tipo_archivo == "Distintas-dimenciones") {
-        for (int tamanio1 = 2; tamanio1 <= pow(2, 10); tamanio1 *= 2) {
-            vector<vector<int>> matriz_1 = Matriz_Cuadrada(tamanio1);
-            vector<vector<int>> matriz_2 = Matriz_Cuadrada(tamanio2);
-            if (tamanio1 == tamanio2) {
-                tamanio2 *= 2;
-                Crear_dataMatriz(matriz_1, matriz_2, "matriz_distintas_dimenciones" + to_string(tamanio1) + "_" + to_string(tamanio2) + ".txt");
-                cout << "Se crearon dos matrices de tamanio " << tamanio1 << " y " << tamanio2 << endl;
-            }
-            else {
-                Crear_dataMatriz(matriz_1, matriz_2, "matriz_distintas_dimenciones" + to_string(tamanio1) + "_" + to_string(tamanio2) + ".txt");
-                cout << "Se crearon dos matrices de tamanio " << tamanio1 << " y " << tamanio2 << endl;
-            }
-   
-        }
-    }
-    else {
-        cout << "Opcion no valida" << endl;
-    }
-
+    
     return 0;
 }

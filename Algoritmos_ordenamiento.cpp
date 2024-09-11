@@ -106,7 +106,7 @@ void mergeSort(vector<int> &array, int izq, int der) {
 int main() {
     string NombreArchivo;
     int tipo_ordenamiento;
-    cout << "Ingrese el nombre del archivo (sin dominio .txt): ";
+    cout << "Ingrese el nombre del archivo (sin .txt): ";
     cin >> NombreArchivo ;
     cout << "Ingrese el tipo de ordenamiento (ingresar numero):\n" << "1.- selectionSort" << "\n" << "2.- mergeSort" << "\n" << "3.- quickSort" << "\n" << "4.- SortC++" << endl;
     cin >> tipo_ordenamiento;
@@ -128,7 +128,9 @@ int main() {
         auto inicio = chrono::high_resolution_clock::now();
         mergeSort(array, 0, array.size() - 1);
         auto fin = chrono::high_resolution_clock::now();
+
         auto duraccion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
+        
         cout << "Tiempo de ejecucion: " << duraccion.count() << " microsegundos" << "/ "<< duraccion.count()/1000000 << " segundos" << endl;
     }
     else if (tipo_ordenamiento == 2) {
