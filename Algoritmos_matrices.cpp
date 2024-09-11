@@ -52,6 +52,22 @@ vector<vector<int>> Matriz_transpuesta(const vector<vector<int>>& matriz) {
     return matriz_transpuesta;
 }
 
+vector<vector<int>> Multiplicacion_matriz_transpuesta(const vector<vector<int>>& matriz_1, const vector<vector<int>>& matriz_2) {
+    size_t dimension = matriz_1.size();
+    vector<vector<int>> matriz_3 = Matriz_transpuesta(matriz_2);
+    vector<vector<int>> matriz_resultante(dimension, vector<int>(dimension, 0));
+
+    for (size_t i = 0; i < dimension; ++i) {
+        for (size_t j = 0; j < dimension; ++j) {
+            for (size_t k = 0; k < dimension; ++k) {
+                matriz_resultante[i][j] += matriz_1[i][k] * matriz_3[j][k];
+            }
+        }
+    }
+
+    return matriz_resultante;
+}
+
 vector<vector<int>> Sumar_matrices(vector<vector<int>>& matriz_1, vector<vector<int>>& matriz_2) {
     size_t dimension = matriz_1.size();
     vector<vector<int>> matriz_resultante(dimension, vector<int>(dimension));
@@ -183,7 +199,7 @@ int main() {
     cin >> nombre_archivo;
     cout << "Ingrese la dimension de una matriz: ";
     cin >> dimension;
-    cout << "Ingrese el tipo de algoritmo que desea ejecutar: ";
+    cout << "Ingrese el tipo de algoritmo que desea ejecutar:\n 1. Multiplicacion de matrices\n 2. Multiplicacion de matrices con matriz transpuesta\n 3. Algoritmo de Strassen\n";
     cin >> tipo_algoritmo;
 
     ifstream archivo(nombre_archivo + ".txt");
@@ -214,7 +230,7 @@ int main() {
     archivo.close();
 
     if (tipo_algoritmo == 1) {
-        for(int i = 0; i < 5 ; i++){
+        for(int i = 0; i < 10 ; i++){
             auto inicio = chrono::high_resolution_clock::now();
             vector<vector<int>> matriz_resultante = Multiplicacion_matrices(matriz_1, matriz_2);
             auto fin = chrono::high_resolution_clock::now();
@@ -227,10 +243,9 @@ int main() {
         }
     }
     else if (tipo_algoritmo == 2) {
-        for(int i = 0; i < 5 ; i++){
-            vector<vector<int>> matriz_transpuesta_2 = Matriz_transpuesta(matriz_2);
+        for(int i = 0; i < 10 ; i++){
             auto inicio = chrono::high_resolution_clock::now();
-            vector<vector<int>> matriz_resultante = Multiplicacion_matrices(matriz_1, matriz_transpuesta_2);
+            vector<vector<int>> matriz_resultante = Multiplicacion_matriz_transpuesta(matriz_1, matriz_2);
             auto fin = chrono::high_resolution_clock::now();
 
             auto duracion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
@@ -241,7 +256,17 @@ int main() {
         }
     }
     else if (tipo_algoritmo == 3) {
-        /* code */
+        for(int i = 0; i < 10 ; i++){
+            auto inicio = chrono::high_resolution_clock::now();
+            vector<vector<int>> matriz_resultante = Strassen(matriz_1, matriz_2);
+            auto fin = chrono::high_resolution_clock::now();
+
+            auto duracion = chrono::duration_cast<chrono::microseconds>(fin - inicio);
+
+            cout << "Tiempo de ejecucion: " << duracion.count() << " microsegundos" << endl;
+
+            escribir_matriz(matriz_resultante, "matriz_resultante" + to_string(i) + ".txt");
+        }
     }
     else {
         cout << "Tipo de algoritmo no valido" << endl;
